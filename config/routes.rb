@@ -1,5 +1,6 @@
 # config/routes.rb
 Rails.application.routes.draw do
+  devise_for :users
   namespace :admin do
     get 'menu_items/new'
     get 'menu_items/create'
