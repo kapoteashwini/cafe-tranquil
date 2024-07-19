@@ -16,17 +16,6 @@ Rails.application.routes.draw do
     resources :menu_items, only: [:new, :create, :index ,:delete]
   end
 
-  # namespace :admin do
-  #   resources :orders, only: [:index] do
-  #     member do
-  #       patch :mark_as_served
-  #       patch :mark_as_canceled
-  #       get :generate_invoice
-  #     end
-  #   end
-  # end
-  
-
 
   get 'admin/:id/mark_as_served', to: 'orders#mark_as_served', as: 'mark_as_served'
   get 'admin/:id/generate_invoice', to: 'orders#generate_invoice', as: 'generate_invoice'
