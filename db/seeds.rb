@@ -8,9 +8,8 @@ User.delete_all
 MenuItem.delete_all
 
 # Create User
-# user1 = User.create!(name: "Admin", role: 'admin')
-
-user2 = User.create!(name: "Bantul", role: 'guest')
+user1 = User.create!(name: "Admin", role: 'admin',email: 'admin@cafe.com',password:12345678)
+user2 = User.create!(name: "Mrs.Ashwini", role: 'guest',email: 'guest-user@cafe.com',password:12345678)
 
 # Create Orders
 order1 = Order.create!(status: "Received", total_amount: 50.0, payment_status: "Pending", user_id: user2.id, table_number: 1)

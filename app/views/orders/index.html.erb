@@ -15,8 +15,7 @@
             <% end %>
           </ul>
           <%= link_to 'Mark as Served', mark_as_served_path(order), method: :patch, class: 'btn btn-success' %>
-          <%= link_to 'Generate Invoice', generate_invoice_path(order), method: :patch, class: 'btn btn-warning' %>
-          <%= link_to 'Back', root_path, class: 'btn btn-primary' %>
+          <%#= link_to 'Generate Invoice', generate_invoice_path(order), method: :patch, class: 'btn btn-warning' %>
         </div>
       </div>
     <% end %>
@@ -35,8 +34,7 @@
           </ul>
           <% if current_user.role == "admin" %>
             <%= link_to 'Mark as Served', mark_as_served_path(order), method: :patch, class: 'btn btn-success' %>
-            <%= link_to 'Generate Invoice', generate_invoice_path(order), method: :patch, class: 'btn btn-warning' %>
-            <%= link_to 'Back', root_path, class: 'btn btn-primary' %>
+            <%#= link_to 'Generate Invoice', generate_invoice_path(order), method: :patch, class: 'btn btn-warning' %>
           <% end %>
         </div>
       </div>
