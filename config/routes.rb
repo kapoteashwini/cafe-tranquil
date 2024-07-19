@@ -1,5 +1,6 @@
 # config/routes.rb
 Rails.application.routes.draw do
+  devise_for :users
   namespace :admin do
     get 'menu_items/new'
     get 'menu_items/create'
@@ -14,17 +15,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :menu_items, only: [:new, :create, :index ,:delete]
   end
-
-  # namespace :admin do
-  #   resources :orders, only: [:index] do
-  #     member do
-  #       patch :mark_as_served
-  #       patch :mark_as_canceled
-  #       get :generate_invoice
-  #     end
-  #   end
-  # end
-  
 
 
   get 'admin/:id/mark_as_served', to: 'orders#mark_as_served', as: 'mark_as_served'

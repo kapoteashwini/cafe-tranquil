@@ -1,7 +1,11 @@
 class OrdersController < ApplicationController
-  before_action :get_menu_item
+  before_action :authenticate_user!
+  before_action :get_menu_item, only: [:new, :create]
+  before_action :set_order, only: [:show, :update, :mark_as_served, :generate_invoice]
+
   def index
-    @orders = Order.all
+    all_orders  = current_user.role=="admin"? Order.all : current_user.orders
+    @orders = all_orders.includes(order_items: :menu_item)
   end
 
   def new
@@ -12,8 +16,8 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.status = 'Received'
-    @order.user = User.last
-    
+    @order.user = current_user
+
     if @order.save
       redirect_to @order
     else
@@ -22,25 +26,24 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
   end
 
   def update
-    @order = Order.find(params[:id])
-    @order.update(status: params[:status])
-    redirect_to @order
+    if @order.update(status: params[:status])
+      redirect_to @order
+    else
+      render :show
+    end
   end
 
   def mark_as_served
-    @order = Order.find(params[:id])
     @order.update(status: 'Served')
-    redirect_to admin_index_path
+    redirect_to admin_index_path, notice: 'Order marked as served.'
   end
 
   def generate_invoice
-    @order = Order.find(params[:id])
     @order.update(status: 'Invoice Raised')
-    redirect_to admin_index_path
+    redirect_to admin_index_path, notice: 'Invoice generated.'
   end
 
   private
@@ -50,6 +53,10 @@ class OrdersController < ApplicationController
   end
 
   def get_menu_item
-     @menu_items = MenuItem.all
+    @menu_items = MenuItem.all
+  end
+
+  def set_order
+    @order = Order.find(params[:id])
   end
 end

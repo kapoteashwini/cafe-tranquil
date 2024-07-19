@@ -1,0 +1,42 @@
+body {
+  background: url('<%= asset_path("cafe-background.jpg") %>') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.signup-container {
+  max-width: 400px;
+  margin: 50px auto;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease-in-out;
+}
+
+.signup-container h2 {
+  text-align: center;
+  color: #8B4513;
+  font-family: 'Lobster', cursive;
+}
+
+.signup-container .field label {
+  color: #8B4513;
+}
+
+.signup-container .actions input {
+  background-color: #8B4513;
+  color: white;
+  border: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
