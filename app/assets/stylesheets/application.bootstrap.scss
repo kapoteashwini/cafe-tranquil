@@ -127,6 +127,10 @@ h2 {
 .form-control {
   border-radius: 4px;
 }
+.card-footer .btn {
+  max-width: 150px; /* Adjust this value as needed */
+  white-space: nowrap;
+}
 
 .btn-primary {
   width: 100%;
