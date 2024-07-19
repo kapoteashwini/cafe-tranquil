@@ -11,8 +11,10 @@
           </div>
           <div class="card-footer">
             <%= link_to 'View', order_path(order), class: 'btn btn-primary me-2' %>
-            <%= link_to 'Mark as Served', mark_as_served_path(order), method: :patch, class: 'btn btn-success me-2' %>
-            <%#= link_to 'Generate Invoice', generate_invoice_path(order), method: :patch, class: 'btn btn-warning' %>
+            <% if order.status != "Served"%>
+              <%= link_to 'Mark as Served', mark_as_served_path(order), method: :patch, class: 'btn btn-success me-2' %>
+              <%#= link_to 'Generate Invoice', generate_invoice_path(order), method: :patch, class: 'btn btn-warning' %>
+            <% end %> 
           </div>
         </div>
       </div>
