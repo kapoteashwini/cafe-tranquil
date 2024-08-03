@@ -1,0 +1,36 @@
+<!-- app/views/admin/menu_items/edit.html.erb -->
+<div class="container">
+  <h1>Edit Menu Item</h1>
+  <%= link_to 'Back to List', admin_menu_items_path, class: 'btn btn-secondary mb-3' %>
+ 
+  <%= form_with(model: @menu_item, url: admin_menu_item_path(@menu_item), local: true) do |form| %>
+    <div class="form-group">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :description %>
+      <%= form.text_area :description, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :price %>
+      <%= form.number_field :price, step: 0.01, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :image %>
+      <%= form.file_field :image, class: 'form-control' %>
+      <% if @menu_item.image.attached? %>
+        <div class="mt-2">
+          <%= image_tag @menu_item.image, size: "150x150", class: "img-thumbnail" %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="form-group">
+      <%= form.submit 'Save Changes', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>

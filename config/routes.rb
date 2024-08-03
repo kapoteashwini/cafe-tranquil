@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :admin, only: [:index]
 
   namespace :admin do
-    resources :menu_items, only: [:new, :create, :index ,:delete]
+    resources :menu_items
   end
 
 

@@ -1,12 +1,15 @@
+<!-- app/views/admin/menu_items/index.html.erb -->
 <div class="container">
   <h1>Menu Items</h1>
-  <%= link_to 'Add New Item', new_admin_menu_item_path, class: 'btn btn-primary' %>
+  <%= link_to 'Add New Item', new_admin_menu_item_path, class: 'btn btn-danger btn-sm mb-3' %>
   <table class="table mt-3">
     <thead>
       <tr>
         <th>Name</th>
         <th>Description</th>
         <th>Price</th>
+        <th>Thumbnail</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -15,6 +18,23 @@
           <td><%= item.name %></td>
           <td><%= item.description %></td>
           <td><%= number_to_currency(item.price) %></td>
+          <td>
+            <% if item.image.attached? %>
+              <%= image_tag item.image, size: "100x100", class: "img-thumbnail" %>
+            <% else %>
+              No image
+            <% end %>
+          </td>
+          <td>
+            <div class="d-flex">
+              <%= link_to edit_admin_menu_item_path(item), class: 'btn btn-warning btn-sm mr-3' do %>
+                <i class="fa fa-pencil-alt"></i>
+              <% end %>
+              <%= link_to admin_menu_item_path(item), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' do %>
+                <i class="fa fa-trash"></i>
+              <% end %>
+            </div>
+          </td>
         </tr>
       <% end %>
     </tbody>
