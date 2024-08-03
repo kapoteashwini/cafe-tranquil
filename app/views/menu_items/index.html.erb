@@ -1,12 +1,13 @@
 <div class="container">
   <h1>Menu</h1>
-  <%#= link_to 'Add New Item', new_menu_item_path, class: 'btn btn-success' %>
   <div class="row mt-4">
     <% @menu_items.each do |item| %>
       <div class="col-md-4">
         <div class="card mb-4">
           <% if item.image.attached? %>
             <%= image_tag item.image, class: 'card-img-top', style: "height: 200px; object-fit: cover;" %>
+          <% else %>
+            <%= image_tag 'coffee-making.gif', class: 'card-img-top', style: "height: 200px; object-fit: cover;" %>
           <% end %>
           <div class="card-body">
             <h5 class="card-title"><%= item.name %></h5>
