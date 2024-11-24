@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>Menu</h1>
+  <div class="row mt-4">
+    <% @menu_items.each do |item| %>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <% if item.image.attached? %>
+            <%= image_tag item.image, class: 'card-img-top', style: "height: 200px; object-fit: cover;" %>
+          <% else %>
+            <%= image_tag 'coffee-making.gif', class: 'card-img-top', style: "height: 200px; object-fit: cover;" %>
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title"><%= item.name %></h5>
+            <p class="card-text"><%= item.description %></p>
+            <p class="card-text"><strong>Price: </strong><%= number_to_currency(item.price) %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <%= link_to "New Order", new_order_path, class: "btn btn-primary" %>
+</div>

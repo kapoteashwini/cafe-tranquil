@@ -1,0 +1,197 @@
+@import 'bootstrap';
+@import 'bootstrap-icons';
+@import 'font-awesome';
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: row;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4; /* Light neutral background for the page */
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #000000; /* Black background for the sidebar */
+  padding: 15px;
+  position: fixed;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-right: 1px solid #333; /* Slightly lighter black border */
+  overflow-y: auto;
+}
+
+.sidebar h4 {
+  color: #ffffff; /* White text for the sidebar heading */
+  margin-bottom: 20px;
+}
+
+.nav-link {
+  display: block;
+  padding: 10px;
+  color: #ffffff; /* White text color for navigation links */
+  text-decoration: none;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: #c8102e; /* Red background on hover */
+    color: #ffffff; /* White text color on hover */
+  }
+}
+
+.main-content {
+  margin-left: 250px;
+  padding: 20px;
+  flex: 1;
+  background-color: #ffffff; /* Clean white background for content area */
+}
+
+.navbar {
+  margin-bottom: 0;
+  background-color: #000000; /* Black background for the navbar */
+  border-bottom: 1px solid #333; /* Slightly lighter black border */
+}
+
+.container {
+  background-color: #ffffff; /* White background for containers */
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow */
+  padding: 20px;
+}
+
+h1, h4 {
+  color: #333; /* Dark gray text for headings */
+}
+
+.button-primary {
+  background-color: #c8102e; /* Red background */
+  color: #ffffff; /* White text */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+  
+  &:hover {
+    background-color: #a30723; /* Darker red shade on hover */
+  }
+}
+
+.button-secondary {
+  background-color: #ffffff; /* White background for secondary buttons */
+  color: #c8102e; /* Red text */
+  border: 2px solid #c8102e; /* Red border */
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+  
+  &:hover {
+    background-color: #c8102e; /* Red background on hover */
+    color: #ffffff; /* White text on hover */
+  }
+}
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #f5f5f5; /* Light grey background */
+}
+
+.login-container {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px; /* Max width for the form */
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.field {
+  margin-bottom: 15px;
+}
+
+.form-label {
+  font-weight: bold;
+}
+
+.form-control {
+  border-radius: 4px;
+}
+.card-footer .btn {
+  max-width: 150px; /* Adjust this value as needed */
+  white-space: nowrap;
+}
+
+.btn-primary {
+  width: 100%;
+}
+/* Ensure the entire page uses the specified font-family */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5; /* Light grey background for the whole page */
+  margin: 0;
+  padding: 0;
+}
+
+/* Center the login container both horizontally and vertically */
+.login-container {
+  background-color: #ffffff; /* White background for the form */
+  padding: 20px;
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Subtle shadow for a card effect */
+  width: 100%;
+  max-width: 400px; /* Maximum width of the form */
+  margin: 50px auto; /* Center horizontally and add top margin */
+}
+
+h2 {
+  text-align: center; /* Center the heading */
+  color: #333; /* Darker color for the heading text */
+  margin-bottom: 20px;
+}
+
+.field {
+  margin-bottom: 15px;
+}
+
+.form-label {
+  font-weight: bold;
+}
+
+.form-control {
+  border-radius: 4px; /* Rounded corners for input fields */
+}
+
+.btn-primary {
+  width: 100%; /* Full width button */
+}
+
+.actions {
+  text-align: center; /* Center the submit button */
+}
+
+@media (max-width: 576px) {
+  .login-container {
+    padding: 15px;
+    max-width: 100%; /* Make the form take full width on very small screens */
+  }
+}
+@keyframes coffee-making {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+.card-img-top:hover {
+  animation: coffee-making 2s infinite;
+}

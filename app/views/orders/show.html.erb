@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>Order Details</h1>
+  <p>Status: <%= @order.status %></p>
+  <ul>
+    <% @order.order_items.each do |item| %>
+      <li><%= item.menu_item.name %> - Quantity: <%= item.quantity %></li>
+    <% end %>
+  </ul>
+  <%if @order.status != "Served"%>
+  <%= link_to 'Mark as Served', mark_as_served_path(@order), method: :patch, class: 'btn btn-success' %>
+  <%#= link_to 'Generate Invoice', generate_invoice_path(@order), method: :patch, class: 'btn btn-warning' %>
+  <%end%>
+</div>
+

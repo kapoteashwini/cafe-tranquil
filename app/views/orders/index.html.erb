@@ -1,0 +1,46 @@
+<div class="container">
+  <h1>My Orders</h1>
+
+  <% if current_user.role == "admin" %>
+    <% # Admins see all orders %>
+    <% @orders.each do |order| %>
+      <div class="card mb-3">
+        <div class="card-header">
+          Order by <%=order.user.name%> # <%= order.id %> - Status: <%= order.status %>
+        </div>
+        <div class="card-body">
+          <ul>
+            <% order.order_items.each do |item| %>
+              <li><%= item.menu_item.name %> - Quantity: <%= item.quantity %></li>
+            <% end %>
+          </ul>
+            <%if order.status != "Served"%>
+	          <%= link_to 'Mark as Served', mark_as_served_path(order), method: :patch, class: 'btn btn-success' %>
+	          <%#= link_to 'Generate Invoice', generate_invoice_path(order), method: :patch, class: 'btn btn-warning' %>
+           <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <% # Non-admin users see only their own orders %>
+    <% @orders.where(user_id: current_user.id).each do |order| %>
+      <div class="card mb-3">
+        <div class="card-header">
+          Order ##<%= order.id %> - Status: <%= order.status %>
+        </div>
+        <div class="card-body">
+          <ul>
+            <% order.order_items.each do |item| %>
+              <li><%= item.menu_item.name %> - Quantity: <%= item.quantity %></li>
+            <% end %>
+          </ul>
+          <% if current_user.role == "admin" && order.status != "Served"  %>
+
+            <%= link_to 'Mark as Served', mark_as_served_path(order), method: :patch, class: 'btn btn-success' %>
+            <%#= link_to 'Generate Invoice', generate_invoice_path(order), method: :patch, class: 'btn btn-warning' %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
